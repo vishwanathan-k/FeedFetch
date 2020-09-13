@@ -1,0 +1,140 @@
+<ngx-loading
+  [show]="loading"
+  [config]="{ backdropBorderRadius: '3px' }"
+></ngx-loading>
+<div fxLayout="row" fxLayoutAlign="center center" style="height: 100%">
+  <div fxFlex="33">
+    <mat-card class="mat-card1">
+      <h3 mat-dialog-title>Register Form</h3>
+
+      <form class="mat-dialog-content">
+        <div class="form-group">
+          <mat-form-field color="accent">
+            <input
+              matInput
+              #input
+              class="form-control"
+              placeholder="First Name"
+              autocomplete="off"
+              [(ngModel)]="signupObj.first_name"
+              #first_name="ngModel"
+              name="first_name"
+              pattern="^[a-z]{5,25}$"
+              required
+            />
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+          <div
+            *ngIf="
+              (first_name.dirty || first_name.touched) && first_name.invalid
+            "
+          >
+            <div *ngIf="first_name.errors.required" class="alert alert-danger">
+              FirstName is required
+            </div>
+            <div *ngIf="first_name.errors.pattern" class="alert alert-danger">
+              FirstName is invalid
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field color="accent">
+            <input
+              matInput
+              #input
+              class="form-control"
+              placeholder="Last Name"
+              autocomplete="off"
+              [(ngModel)]="signupObj.last_name"
+              #last_name="ngModel"
+              name="last_name"
+              required
+            />
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+          <div
+            *ngIf="(last_name.dirty || last_name.touched) && last_name.invalid"
+          >
+            <div *ngIf="last_name.errors.required" class="alert alert-danger">
+              Lastname is required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field color="accent">
+            <input
+              matInput
+              #input
+              class="form-control"
+              placeholder="Email"
+              [(ngModel)]="signupObj.email"
+              #email="ngModel"
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+              autocomplete="off"
+              name="email"
+              required
+            />
+            <mat-icon matSuffix>mail</mat-icon>
+          </mat-form-field>
+          <div *ngIf="(email.dirty || email.touched) && email.invalid">
+            <div *ngIf="email.errors.required" class="alert alert-danger">
+              Email is required
+            </div>
+            <div *ngIf="email.errors.pattern" class="alert alert-danger">
+              Email is invalid
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field color="accent">
+            <input
+              matInput
+              class="form-control"
+              placeholder="Password"
+              [(ngModel)]="signupObj.password"
+              #password="ngModel"
+              autocomplete="off"
+              [type]="hide ? 'password' : 'text'"
+              name="password"
+            />
+            <mat-icon matSuffix (click)="hide = !hide">{{
+              hide ? "visibility" : "visibility_off"
+            }}</mat-icon>
+          </mat-form-field>
+          <div *ngIf="(password.dirty || password.touched) && password.invalid">
+            <div *ngIf="password.errors.required" class="alert alert-danger">
+              Password is required
+            </div>
+          </div>
+        </div>
+
+        <br />
+        <div mat-dialog-actions>
+          <button
+            mat-raised-button
+            type="submit"
+            class="savebtn"
+            (click)="signupUser()"
+          >
+            Register</button
+          >&nbsp;
+          <button
+            type="reset"
+            class="cancel"
+            routerLink="/login"
+            mat-raised-button
+            tabindex="-1"
+          >
+            Cancel
+          </button>
+        </div>
+        <div mat-dialog-actions>
+          <p>Already have an account? <a routerLink="/login">Login</a>.</p>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>

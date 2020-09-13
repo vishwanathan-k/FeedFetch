@@ -1,0 +1,60 @@
+<ngx-loading
+  [show]="loading"
+  [config]="{ backdropBorderRadius: '3px' }"
+></ngx-loading>
+<div>
+  <div fxLayout="row" fxLayoutGap="10px 5px" style="cursor: pointer">
+    <div fxFlex="100">
+      <mat-card class="post-card">
+        <mat-card-header>
+          <mat-card-title>Create Post</mat-card-title>
+        </mat-card-header>
+        <mat-card-content style="align-items: flex-end">
+          <form class="post-form" fxFlex="90">
+            <mat-form-field class="field-full-width">
+              <mat-label>Write your post</mat-label>
+              <textarea
+                matInput
+                rows="2"
+                placeholder="Ex. It makes me feel..."
+                [(ngModel)]="postObjModal.post_comment"
+                #post="ngModel"
+                name="post"
+              ></textarea>
+            </mat-form-field>
+          </form>
+          <div fxFlex="5">
+            <button
+              mat-raised-button
+              color="primary"
+              style="margin-bottom: 1.25em"
+              (click)="postDatas()"
+            >
+              Post
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<mat-card class="feed-card" *ngFor="let item of postArray; let index = index">
+  <mat-card-header>
+    <mat-card-title>{{ item.name }}</mat-card-title>
+    <mat-card-subtitle>{{
+      item.createddAt | date: "MM/dd/yy"
+    }}</mat-card-subtitle>
+  </mat-card-header>
+  <img
+    mat-card-image
+    src="https://images.unsplash.com/photo-1531960146247-d3a775e24f74?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1081&q=80"
+    alt="Photo of a Shiba Inu"
+  />
+  <mat-card-content>
+    <p>{{ item.post_comment }}</p>
+  </mat-card-content>
+  <!-- <mat-card-actions>
+    <button mat-button>FOLLOW</button>
+  </mat-card-actions> -->
+</mat-card>

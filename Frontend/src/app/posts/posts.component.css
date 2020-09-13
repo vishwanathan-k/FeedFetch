@@ -1,0 +1,17 @@
+.post-form,
+.post-form .field-full-width {
+  width: 100%;
+}
+
+.post-form {
+  margin-right: 10px;
+}
+
+::ng-deep .mat-card-header .mat-card-header-text {
+  margin: 0;
+}
+
+.post-card,
+.feed-card {
+  margin-bottom: 10px;
+}

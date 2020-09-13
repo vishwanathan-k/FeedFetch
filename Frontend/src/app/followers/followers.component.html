@@ -1,0 +1,29 @@
+<ngx-loading
+  [show]="loading"
+  [config]="{ backdropBorderRadius: '3px' }"
+></ngx-loading>
+<div fxLayout="row wrap" fxLayoutAlign="space-around">
+  <mat-card
+    class="list-card"
+    *ngFor="let item of followersArray; let index = index"
+    fxLayoutGap="20px"
+  >
+    <mat-card-header>
+      <mat-card-title>{{ item.first_name }}</mat-card-title>
+      <mat-card-subtitle>{{
+        item.createdAt | date: "MM/dd/yy"
+      }}</mat-card-subtitle>
+    </mat-card-header>
+    <img
+      mat-card-image
+      src="https://images.unsplash.com/photo-1531960146247-d3a775e24f74?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1081&q=80
+  "
+      alt="img alt title"
+    />
+    <mat-card-content>
+      <a href="https://medium.....64" class="mat-caption"
+        >Emai: {{ item.email }}
+      </a>
+    </mat-card-content>
+  </mat-card>
+</div>

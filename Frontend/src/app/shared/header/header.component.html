@@ -1,0 +1,40 @@
+<mat-drawer-container fullscreen>
+  <mat-drawer #drawer mode="side" style="width: 200px;">
+    <mat-list>
+      <mat-list-item>Home</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Post</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Followers</mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content fxLayout="column">
+    <mat-toolbar color="primary" style="min-height: 64px;">
+      <!-- <button mat-icon-button (click)="drawer.toggle()" aria-label="Menu">
+        <mat-icon>menu</mat-icon>
+      </button> -->
+      <span>Feed Fetch</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="logout()" aria-label="logout">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </mat-toolbar>
+    <div class="main-content">
+      <nav mat-tab-nav-bar mat-stretch-tabs>
+        <a mat-tab-link
+        *ngFor="let link of navLinks"
+        [routerLink]="link.link"
+        routerLinkActive #rla="routerLinkActive"
+        [active]="rla.isActive">
+          {{link.label}}
+        </a>
+      </nav>
+      <div class="page-content">
+        <router-outlet></router-outlet>
+      </div>
+
+    </div>
+
+  </mat-drawer-content>
+
+</mat-drawer-container>

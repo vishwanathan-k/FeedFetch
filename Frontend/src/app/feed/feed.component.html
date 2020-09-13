@@ -1,0 +1,34 @@
+<ngx-loading
+  [show]="loading"
+  [config]="{ backdropBorderRadius: '3px' }"
+></ngx-loading>
+<mat-card class="feed-card" *ngFor="let item of feedArray; let index = index">
+  <div *ngFor="let itemVal of item.post; let i = i">
+    <mat-card-header>
+      <mat-card-title
+        >{{ item.first_name }} {{ item.last_name }}</mat-card-title
+      >
+      <mat-card-subtitle>{{
+        item.createdAt | date: "MM/dd/yy"
+      }}</mat-card-subtitle>
+    </mat-card-header>
+    <img
+      mat-card-image
+      src="https://images.unsplash.com/photo-1531960146247-d3a775e24f74?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1081&q=80"
+      alt="Photo of a Shiba Inu"
+    />
+    <mat-card-content>
+      <p>
+        {{ itemVal.post_comment }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button class="followbtn" (click)="follow(item.id)">
+        FOLLOW
+      </button>
+      <button mat-raised-button class="postbtn" (click)="post(item.id)">
+        POST
+      </button>
+    </mat-card-actions>
+  </div>
+</mat-card>

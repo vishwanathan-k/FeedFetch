@@ -1,0 +1,75 @@
+<ngx-loading
+  [show]="loading"
+  [config]="{ backdropBorderRadius: '3px' }"
+></ngx-loading>
+<div fxLayout="row" fxLayoutAlign="center center" style="height: 100%">
+  <div fxFlex="33">
+    <mat-card>
+      <h3 mat-dialog-title>Login Form</h3>
+      <form class="mat-dialog-content">
+        <div class="form-group">
+          <mat-form-field color="accent">
+            <input
+              matInput
+              #input
+              class="form-control"
+              placeholder="Email"
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+              autocomplete="off"
+              name="email"
+              [(ngModel)]="signinObj.email"
+              #email="ngModel"
+              required
+            />
+            <mat-icon matSuffix>mail</mat-icon>
+          </mat-form-field>
+          <div *ngIf="(email.dirty || email.touched) && email.invalid">
+            <div *ngIf="email.errors.required" class="alert alert-danger">
+              Email is required
+            </div>
+            <div *ngIf="email.errors.pattern" class="alert alert-danger">
+              Email is invalid
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field color="accent">
+            <input
+              matInput
+              class="form-control"
+              placeholder="Password"
+              autocomplete="off"
+              [type]="hide ? 'password' : 'text'"
+              [(ngModel)]="signinObj.password"
+              #password="ngModel"
+              name="password"
+              required
+            />
+            <mat-icon matSuffix (click)="hide = !hide">{{
+              hide ? "visibility" : "visibility_off"
+            }}</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <br />
+        <div mat-dialog-actions>
+          <button
+            mat-raised-button
+            type="submit"
+            class="savebtn"
+            (click)="signinUser()"
+          >
+            Login</button
+          >&nbsp;
+        </div>
+        <div mat-dialog-actions>
+          <p>
+            Don't have an account?
+            <a routerLink="/register" class="ml-2">Register</a>
+          </p>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>

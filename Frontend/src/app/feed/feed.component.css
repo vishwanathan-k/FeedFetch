@@ -1,0 +1,19 @@
+.feed-card {
+  margin-bottom: 10px;
+}
+::ng-deep .mat-snack-bar-container{
+  background-color: rgb(29, 146, 107);
+}
+
+::ng-deep .mat-simple-snackbar{
+  color:#ffffff;
+}
+
+.followbtn{
+  background-color: cadetblue;
+  color: white;
+  }
+  
+  .postbtn{
+  background-color:lightgray;
+  }

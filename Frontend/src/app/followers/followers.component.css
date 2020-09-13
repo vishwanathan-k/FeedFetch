@@ -1,0 +1,9 @@
+.follower-header-image {
+  background-image: url('https://images.unsplash.com/photo-1531960146247-d3a775e24f74?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1081&q=80');
+  background-size: cover;
+}
+.list-card{
+  max-width: 260px;
+  margin-bottom: 20px;
+  margin-left:10px;
+  }
